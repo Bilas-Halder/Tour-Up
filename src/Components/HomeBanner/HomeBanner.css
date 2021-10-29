@@ -1,0 +1,58 @@
+.carousel-items{
+    height: 90vh;
+    transition: all 0.7s ease-in;
+    position: relative;
+}
+.carousel-img{
+    transform: scale(1.5,1.5);
+    width: 100%;
+    transition: all 0.7s ease-in;
+}
+.carousel-items::before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #00000070;
+    transition: all 0.3s ease-in;
+    z-index: 100;
+}
+.carousel-texts{
+    position: absolute;
+    top: 6.25rem;
+    left: 15%;
+    padding-bottom: 1.25rem;
+    color: #fff;
+}
+.carousel-texts h1{
+    font-size: 4rem;
+}
+.carousel-texts h2{
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    font-size: 2rem;
+    color: var(--primary);
+}
+
+.carousel-texts,.carousel-control-prev,.carousel-control-next,.carousel-indicators{
+    z-index: 105;
+}
+
+.card-customize{
+    border: none;
+}
+.banner-text{
+    width: 40%;
+    text-align: center;
+}
+.welcome-text{
+    font-size: 60px;
+}
+.our-text{
+    font-size: 50px;
+}
+.text-gray{
+    color: #535353;
+}
