@@ -1,0 +1,45 @@
+.col-customize{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.card{
+    border: none;
+    overflow: hidden;
+}
+.pack-img-parent{
+    border-radius: 7px;
+    overflow: hidden;
+}
+.pack-img{
+    transition: all 0.4s ease-in;
+}
+.pack-img:hover{
+    transform: scale(1.13,1.13);
+}
+.pack-price{
+    color: black;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+.pack-price span{
+    color: #333333;
+    font-size: 1rem;
+}
+.pack-duration{
+    color: #333333;
+    font-weight: 500;
+    font-size: 1rem;
+}
+.pack-duration i{
+    font-size: 1.2rem;
+}
+.pack-place{
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+.pack-place i{
+    color: #444444;
+}
+.pack-rating{
+    font-weight: 500;
+}

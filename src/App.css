@@ -2,7 +2,7 @@
   --primary: #FF7F47;
   --secondary: #304F47;
 }
-.primary-btn{
+.primary-btn,.primary-btn-right{
   display: inline-block;
   color: white;
   background-color: var(--secondary);
@@ -15,11 +15,11 @@
   position: relative;
   z-index: 9;
 }
-.primary-btn::before{
+.primary-btn::before, .primary-btn-right::before{
   content: "";
   position: absolute;
   top: 0px;
-  left: 0px;
+  left: 0;
   height: 100%;
   width: 100%;
   background-color: var(--primary);
@@ -27,11 +27,23 @@
   transition: all 0.4s ease-in;
   z-index: -1;
 }
-.primary-btn:hover{
-  color: white;
-}
-.primary-btn:hover::before{
-  clip-path: circle(150% at 0% 0%);
+.primary-btn-right::before{
+  clip-path: circle(22% at 102% 50%);
+  transition: all 0.4s ease-in;
 }
 
+.primary-btn:hover,.primary-btn-right:hover{
+  color: white;
+}
+.primary-btn:hover::before,.primary-btn-right:hover::before{
+  clip-path: circle(150% at 0% 0%);
+}
+.color-p{
+  color: #FF7F47;
+}
+.primary-btn-right{
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 7px 20px;
+}
 
