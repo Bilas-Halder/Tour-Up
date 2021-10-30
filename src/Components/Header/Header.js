@@ -17,7 +17,7 @@ const Header = () => {
     }
 
     return (
-        <Navbar fixed='top' bg="light" expand="lg">
+        <Navbar className="nav-shadow" fixed='top' bg="light" expand="lg">
             <Container>
                 <Navbar.Brand as={HashLink} to="/">
                     <div className="d-flex align-items-center justify-content-center">
@@ -44,7 +44,7 @@ const Header = () => {
                             : <Nav.Link className="text-center nav-btn" as={HashLink} to="/login">Log In</Nav.Link>
                     }
                     {
-                        user.email && <button onClick={handleLogOut} className="text-center nav-btn">Log Out</button>
+                        user.email && <button onClick={handleLogOut} className="text-center nav-btn px-3">Log Out</button>
                     }
 
 

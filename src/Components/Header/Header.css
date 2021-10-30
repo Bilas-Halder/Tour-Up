@@ -1,3 +1,6 @@
+.nav-shadow{
+    box-shadow: 0px 6px 22px -4px gray;
+}
 .logo-div{
     width: 30px;
     height: 40px;
@@ -28,6 +31,7 @@
 .nav-btn{
     position: relative;
     color: var(--secondary);
+    padding: 0.5rem 1rem;
     font-weight: 500;
     transition: all 0.3s ease-in;
     border: none;

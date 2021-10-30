@@ -1,0 +1,170 @@
+.book-now-banner-img-div{
+    overflow: hidden;
+}
+.book-now-banner::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #00000070;
+    transition: all 0.3s ease-in;
+    z-index: 100;
+}
+.book-now-banner-img{
+    margin-top: -10vh;
+}
+.img-overlay{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 105;
+}
+.book-now-banner-title{
+    font-size: 3vw;
+}
+.book-now-banner-text{
+    font-size: 1.3vw;
+    font-weight: 500;
+    margin-top: 1rem;
+    text-align: center;
+}
+.package-img{
+    width: 100%;
+    border-radius: 7px;
+    margin-right: 50px;
+}
+.booking-form-div{
+    width: 100%;
+    border-radius: 7px;
+    box-shadow: 0px 0px 20px -5px gray;
+}
+
+
+.booking-pack-place-div{
+    display: flex;
+}
+.booking-pack-place{
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 0px;
+}
+.booking-pack-place i{
+    color: var(--secondary);
+}
+.booking-pack-rating{
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--secondary);
+}
+.booking-pack-rating span{
+    font-size: 1.1rem;
+}
+.booking-pack-price-div{
+    display: flex;
+}
+.booking-pack-price{
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+.booking-pack-price span{
+    font-size: 1.2rem;
+}
+
+
+
+
+/* react form */
+
+.form-input{
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--secondary);
+    margin-top: 0.7rem;
+    outline: none !important;
+}
+.quantity{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--secondary);
+    border-radius: 6px;
+    margin-top: 0.7rem;
+}
+.quantity span{
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.quantity span span{
+    font-size: 1.3rem;
+}
+.plus,.minus{
+    border: none;
+    background-color: transparent;
+    font-size: 1.2rem;
+    line-height: 16px;
+    margin: 0px 1rem;
+    color: var(--secondary);
+    cursor: pointer;
+}
+.msg-box{
+    height: 20vh;
+}
+.submit-btn{
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--secondary);
+    background-color: var(--secondary);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease-in ;
+}
+.submit-btn:hover{
+    border: 1px solid var(--primary);
+    background-color: var(--primary);
+}
+
+
+
+
+
+@media screen and (max-width: 575px) {
+    
+.book-now-banner-img{
+    margin-top: 0vh;
+}
+
+.book-now-banner-title{
+    font-size: 4.5vw;
+}
+
+.book-now-banner-text{
+    font-size: 2.2vw;
+    margin-top: 0.8rem;
+}
+
+.booking-pack-place-div{
+    display: block;
+}
+.booking-pack-place{
+    text-align: center;
+}
+.booking-pack-price{
+    font-size: 1.1rem;
+    text-align: center;
+}
+.booking-pack-price-div{
+    display: block;
+}
+.package-img{
+    margin-right: 0px;
+}
+}
