@@ -4,11 +4,17 @@ import './Header.css';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import { HashLink } from 'react-router-hash-link';
 import useAuth from '../../hooks/useAuth';
-import { useHistory } from 'react-router';
+import { useHistory, useLocation } from 'react-router';
 
 const Header = () => {
     const { user, logout } = useAuth();
     const history = useHistory();
+    const location = useLocation();
+    const path = location.state?.from?.pathname;
+
+    const handleLogOut = () => {
+        logout(path, history);
+    }
 
     return (
         <Navbar fixed='top' bg="light" expand="lg">
@@ -38,7 +44,7 @@ const Header = () => {
                             : <Nav.Link className="text-center nav-btn" as={HashLink} to="/login">Log In</Nav.Link>
                     }
                     {
-                        user.email && <button onClick={() => logout("", history)} className="text-center nav-btn">Log Out</button>
+                        user.email && <button onClick={handleLogOut} className="text-center nav-btn">Log Out</button>
                     }
 
 

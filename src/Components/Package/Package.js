@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import './Package.css';
 
 const Package = (props) => {
-    const { place, price, imgURL, duration, rating } = props.package;
+    const { _id, place, price, imgURL, duration, rating } = props.package;
     return (
         <Col xm={12} sm={6} lg={4} className='col-customize'>
             <Card>
@@ -26,7 +26,7 @@ const Package = (props) => {
                                 rating >= 1000 ? (rating / 1000).toFixed(1) + "K+" : rating
                             } Ratings</p>
 
-                            <NavLink className="primary-btn-right" to="/">Book Now</NavLink>
+                            <NavLink className="primary-btn-right" to={`/bookpackage/${_id}`}>Book Now</NavLink>
                         </div>
                     </div>
                 </Card.Body>

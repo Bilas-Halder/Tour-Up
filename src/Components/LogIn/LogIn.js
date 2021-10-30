@@ -1,14 +1,37 @@
 import React, { useEffect } from 'react';
+import { useHistory, useLocation } from 'react-router';
 import useAuth from '../../hooks/useAuth';
 import './LogIn.css';
 
 const LogIn = () => {
-    const { user, logInUsingGoogle, loginUsingFacebook } = useAuth();
+    const { user, logInUsingGoogle, loginUsingFacebook, setLoading } = useAuth();
 
+    const history = useHistory();
+    const location = useLocation();
+    const path = location.state?.from?.pathname;
+
+
+    useEffect(() => {
+        // if someone is not came from other route he will goto home
+        if (!path && user?.email) {
+            history.push("/");
+        }
+    }, [user]);
 
     const googleLogin = () => {
-        console.log("clicking");
-        logInUsingGoogle();
+        logInUsingGoogle()
+            .then(() => {
+                history.push(path);
+                setLoading(false);
+            })
+    }
+
+    const facebookLogin = () => {
+        loginUsingFacebook()
+            .then(() => {
+                history.push(path);
+                setLoading(false);
+            })
     }
 
 
@@ -23,7 +46,7 @@ const LogIn = () => {
 
                 <p className="or">Or</p>
 
-                <button className="facebook">
+                <button onClick={facebookLogin} className="facebook">
                     <div className="f-icon">
                         <i className="fab fa-facebook-f"></i>
                     </div> LogIn with Facebook

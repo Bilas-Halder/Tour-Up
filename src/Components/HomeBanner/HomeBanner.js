@@ -10,7 +10,6 @@ const HomeBanner = () => {
         fetch("https://sheltered-ocean-54325.herokuapp.com/banner/places")
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 setBannerData(data);
             })
             .catch(err => console.error(err));
