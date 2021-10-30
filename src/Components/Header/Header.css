@@ -30,6 +30,8 @@
     color: var(--secondary);
     font-weight: 500;
     transition: all 0.3s ease-in;
+    border: none;
+    background-color: transparent;
 }
 .nav-btn::before{
     content: "";

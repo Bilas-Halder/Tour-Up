@@ -56,3 +56,36 @@
 .text-gray{
     color: #535353;
 }
+
+
+
+@media screen and (max-width: 575px) {
+
+    .carousel-items{
+        height: 24.5vh;
+    }
+    .carousel-texts{
+        top: 0.25rem;
+        left: 5%;
+    }
+    .carousel-texts h1{
+        font-size: 1.3rem;
+    }
+    .carousel-texts h2{
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+    }
+    .banner-btn{
+        font-size: 0.65rem;
+        padding: 5px 15px;
+    }
+    .carousel-control-prev, .carousel-control-next{
+        display: none;
+    }
+    .carousel-indicators [data-bs-target]{
+        height: 1px;
+        width: 15px;
+        margin-bottom: -13px;
+    }
+}

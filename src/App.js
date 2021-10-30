@@ -8,29 +8,32 @@ import Header from './Components/Header/Header';
 import AboutUs from './Components/AboutUs/AboutUs';
 import LogIn from './Components/LogIn/LogIn';
 import NotFound from './Components/NotFound/NotFound';
+import AuthProvider from './Contexts/AuthProvider';
 
 
 initializeApp(firebaseConfig);
 
 function App() {
   return (
-    <Router>
-      <Header > </Header>
-      <Switch>
-        <Route path='/' exact >
-          <Home></Home>
-        </Route>
-        <Route path="/aboutus" exact >
-          <AboutUs></AboutUs>
-        </Route>
-        <Route path="/login" exact >
-          <LogIn></LogIn>
-        </Route>
-        <Route path="/*" exact >
-          <NotFound></NotFound>
-        </Route>
-      </Switch>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Header > </Header>
+        <Switch>
+          <Route path='/' exact >
+            <Home></Home>
+          </Route>
+          <Route path="/aboutus" exact >
+            <AboutUs></AboutUs>
+          </Route>
+          <Route path="/login" exact >
+            <LogIn></LogIn>
+          </Route>
+          <Route path="/*" exact >
+            <NotFound></NotFound>
+          </Route>
+        </Switch>
+      </Router>
+    </AuthProvider>
   );
 }
 

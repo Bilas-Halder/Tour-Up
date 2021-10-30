@@ -1,0 +1,26 @@
+[
+    {
+        "place": "Hampshire",
+        "duration": 7,
+        "price": 180,
+        "rating": 452,
+        "imgURL": "https://i.ibb.co/JyPWV7n/banner-1.png",
+        "key": 1
+    },
+    {
+        "place": "Madagascar",
+        "duration": 6,
+        "price": 290,
+        "rating": 4502,
+        "imgURL": "https://i.ibb.co/5Khph4y/banner-2.png",
+        "key": 2
+    },
+    {
+        "place": "Indonesia",
+        "duration": 6,
+        "price": 159,
+        "rating": 2530,
+        "imgURL": "https://i.ibb.co/w6JfGDL/banner-3.png",
+        "key": 3
+    }
+]

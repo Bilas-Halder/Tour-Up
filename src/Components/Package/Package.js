@@ -12,23 +12,23 @@ const Package = (props) => {
                     <Card.Img className="pack-img" variant="top" src={imgURL} />
                 </div>
                 <Card.Body>
-                    <Card.Text className="mt-2 text-start">
+                    <div className="mt-2 card-text text-start">
                         <div className="d-flex justify-content-between">
                             <p className="pack-price">${price}/<span>Per Person</span></p>
                             <p className="pack-duration">
-                                <i class="far fa-calendar-alt color-p"></i> {duration} Days/{duration + 1} Night
+                                <i className="far fa-calendar-alt color-p"></i> {duration} Days/{duration + 1} Night
                             </p>
                         </div>
-                        <p className="color-p pack-place"><i class="fas fa-map-marker-alt"></i> {place}</p>
+                        <p className="color-p pack-place"><i className="fas fa-map-marker-alt"></i> {place}</p>
 
                         <div className="d-flex justify-content-between align-items-center">
-                            <p className="mb-0 pack-rating"><i class="fas fa-star color-p"></i> {
-                                rating >= 1000 ? (rating / 1000) + "K+" : rating
+                            <p className="mb-0 pack-rating"><i className="fas fa-star color-p"></i> {
+                                rating >= 1000 ? (rating / 1000).toFixed(1) + "K+" : rating
                             } Ratings</p>
 
                             <NavLink className="primary-btn-right" to="/">Book Now</NavLink>
                         </div>
-                    </Card.Text>
+                    </div>
                 </Card.Body>
             </Card>
         </Col>

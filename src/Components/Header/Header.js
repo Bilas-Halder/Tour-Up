@@ -3,8 +3,13 @@ import logo from '../../images/logo.png'
 import './Header.css';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import { HashLink } from 'react-router-hash-link';
+import useAuth from '../../hooks/useAuth';
+import { useHistory } from 'react-router';
 
 const Header = () => {
+    const { user, logout } = useAuth();
+    const history = useHistory();
+
     return (
         <Navbar fixed='top' bg="light" expand="lg">
             <Container>
@@ -22,10 +27,19 @@ const Header = () => {
                     <Nav.Link className="text-center nav-btn" as={HashLink} to="/">Home</Nav.Link>
 
                     <Nav.Link className="text-center nav-btn" as={HashLink} to="/#packages">Packages</Nav.Link>
+                    {
+                        user.email && <Nav.Link className="text-center nav-btn" as={HashLink} to="/dashboard">Dashboard</Nav.Link>
+                    }
 
                     <Nav.Link className="text-center nav-btn" as={HashLink} to="/aboutus">About Us</Nav.Link>
 
-                    <Nav.Link className="text-center nav-btn" as={HashLink} to="/login">Log In</Nav.Link>
+                    {
+                        user.email ? <Nav.Link className="text-center nav-btn" as={HashLink} to="/dashboard">{user.displayName}</Nav.Link>
+                            : <Nav.Link className="text-center nav-btn" as={HashLink} to="/login">Log In</Nav.Link>
+                    }
+                    {
+                        user.email && <button onClick={() => logout("", history)} className="text-center nav-btn">Log Out</button>
+                    }
 
 
                 </Navbar.Collapse>

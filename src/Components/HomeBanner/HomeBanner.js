@@ -1,62 +1,68 @@
-import React from 'react';
-import { Card, Carousel } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Carousel } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import './HomeBanner.css';
 
 const HomeBanner = () => {
+    const [bannerData, setBannerData] = useState([]);
 
-    const bannerData = [
-        {
-            title: "something"
-        }
-    ]
+    useEffect(() => {
+        fetch("https://sheltered-ocean-54325.herokuapp.com/banner/places")
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setBannerData(data);
+            })
+            .catch(err => console.error(err));
+    }, []);
+
 
     return (
         <>
-            <Carousel>
+            <Carousel fade>
                 <Carousel.Item className="carousel-items" >
                     <img
                         className="carousel-img d-block"
-                        src="https://i.ibb.co/JyPWV7n/banner-1.png"
+                        src={bannerData[0]?.imgURL}
                         alt="First slide"
                     />
 
                     <div className="carousel-texts text-start">
                         <h1 className="item-text">Amazing Tour</h1>
-                        <h1 className="item-text">In Hampshire</h1>
+                        <h1 className="item-text">In {bannerData[0]?.place}</h1>
                         <h2>7 Days 8 Night Tour</h2>
-                        <NavLink to="/to" className="primary-btn">Book Now</NavLink>
+                        <NavLink to="/to" className="primary-btn banner-btn">Book Now</NavLink>
                     </div>
 
                 </Carousel.Item>
                 <Carousel.Item className="carousel-items" >
                     <img
                         className="carousel-img d-block w-100"
-                        src="https://i.ibb.co/5Khph4y/banner-2.png"
+                        src={bannerData[1]?.imgURL}
                         alt="Second slide"
                     />
 
                     <div className="carousel-texts text-start">
                         <h1 className="item-text">Amazing Tour</h1>
-                        <h1 className="item-text">In Madagascar</h1>
+                        <h1 className="item-text">In {bannerData[1]?.place}</h1>
                         <h2>6 Days 7 Night Tour</h2>
-                        <NavLink to="/to" className="primary-btn">Book Now</NavLink>
+                        <NavLink to="/to" className="primary-btn banner-btn">Book Now</NavLink>
                     </div>
 
                 </Carousel.Item>
                 <Carousel.Item className="carousel-items" >
                     <img
                         className="carousel-img d-block w-100"
-                        src="https://i.ibb.co/w6JfGDL/banner-3.png"
+                        src={bannerData[2]?.imgURL}
                         alt="Third slide"
                     />
 
 
                     <div className="carousel-texts text-start">
                         <h1 className="item-text">Amazing Tour</h1>
-                        <h1 className="item-text">In Indonesia</h1>
-                        <h2>7 Days 7 Night Tour</h2>
-                        <NavLink to="/to" className="primary-btn">Book Now</NavLink>
+                        <h1 className="item-text">In {bannerData[2]?.place}</h1>
+                        <h2>6 Days 7 Night Tour</h2>
+                        <NavLink to="/to" className="primary-btn banner-btn">Book Now</NavLink>
                     </div>
 
                 </Carousel.Item>
