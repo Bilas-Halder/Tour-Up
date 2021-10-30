@@ -3,15 +3,47 @@ import './BookNow.css';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import { useForm } from "react-hook-form";
 import useAuth from '../../hooks/useAuth';
+import { async } from '@firebase/util';
 
 const BookNow = () => {
     const [pack, setPack] = useState({});
     const { id } = useParams();
     const { user } = useAuth();
     const [quantity, setQuantity] = useState(1);
+    const { register, handleSubmit } = useForm();
+    const history = useHistory();
+
+
+    const postData = (url, data) => {
+        return fetch(url, {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+    };
+
+
+
+    const onSubmit = async (data) => {
+        data.placeId = pack?._id;
+        data.people = quantity;
+
+        const url = "https://sheltered-ocean-54325.herokuapp.com/bookone";
+        await postData(url, data)
+            .then(response => response.json())
+            .then(d => {
+                window.alert("Booking Done with pleasure");
+                history.push('/');
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
 
     useEffect(() => {
         fetch(`https://sheltered-ocean-54325.herokuapp.com/places/${id}`)
@@ -20,9 +52,6 @@ const BookNow = () => {
     }, []);
 
 
-    const { register, handleSubmit } = useForm();
-    const [result, setResult] = useState("");
-    const onSubmit = (data) => setResult(JSON.stringify(data));
 
     const plusClickHandler = () => {
         if (quantity < 99) {
@@ -97,15 +126,14 @@ const BookNow = () => {
                                         <span onClick={plusClickHandler} className="plus"><i className="fas fa-user-plus"></i></span>
                                     </div>
 
-                                    <select className="form-input" required   {...register("category")}>
+                                    <select className="form-input" required   {...register("travelBy")}>
                                         <option value="">Travel Ticket Type</option>
-                                        <option value="A">Travel in Bus</option>
-                                        <option value="B">Travel in Plane</option>
+                                        <option value="Bus">Travel in Bus</option>
+                                        <option value="Plane">Travel in Plane</option>
                                     </select>
 
-                                    <textarea className="form-input msg-box" placeholder="Massage" />
+                                    <textarea className="form-input msg-box" {...register("massage")} placeholder="Massage" />
 
-                                    <p>{result}</p>
                                     <input className="submit-btn" type="submit" />
                                 </form>
                             </div>

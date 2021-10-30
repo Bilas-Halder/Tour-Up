@@ -12,7 +12,7 @@ const PrivateRoute = (props) => {
         // in the time of loading it will show a spinner
         return (
             <div style={{ minHeight: "80vh" }} className="d-flex justify-content-center align-items-center w-100">
-                <Spinner animation="border" variant="danger" />
+                <Spinner animation="border" variant="primary" />
             </div>
         );
     }

@@ -13,6 +13,7 @@ import AuthProvider from './Contexts/AuthProvider';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import Dashboard from './Components/Dashboard/Dashboard';
 import BookNow from './Components/BookNow/BookNow';
+import ScrollToTop from './Components/ScrollToTop/ScrollToTop';
 
 
 initializeApp(firebaseConfig);
@@ -21,6 +22,7 @@ function App() {
   return (
     <AuthProvider>
       <Router>
+        <ScrollToTop />
         <Header > </Header>
 
         <Switch>
