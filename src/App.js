@@ -5,13 +5,11 @@ import firebaseConfig from './firebase/firebase_config';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from './Components/Home/Home';
 import Header from './Components/Header/Header';
-import AboutUs from './Components/AboutUs/AboutUs';
 import LogIn from './Components/LogIn/LogIn';
 import NotFound from './Components/NotFound/NotFound';
 import Footer from './Components/Footer/Footer';
 import AuthProvider from './Contexts/AuthProvider';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
-import Dashboard from './Components/Dashboard/Dashboard';
 import BookNow from './Components/BookNow/BookNow';
 import ScrollToTop from './Components/ScrollToTop/ScrollToTop';
 import MyOrders from './Components/MyOrders/MyOrders';
@@ -40,6 +38,7 @@ function App() {
           <PrivateRoute path='/dashboard/manageorders' exact >
             <ManageOrders></ManageOrders>
           </PrivateRoute>
+
           <PrivateRoute path='/dashboard/addpackage' exact >
             <AddPackage></AddPackage>
           </PrivateRoute>

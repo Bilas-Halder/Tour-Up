@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import Package from '../Package/Package';
+import BlueSpinner from '../Spinner/Spinner';
 import './Packages.css'
 
 const Packages = () => {
@@ -16,21 +17,22 @@ const Packages = () => {
     }, []);
 
     return (
-        <div id="packages" className="text-center">
-            <div className="text-center mt-5">
-                <h4 className="color-p choose-text">Choose Your Package</h4>
-                <h2 className="package-text">Select Your Best Package For Your Travel</h2>
+        packages.length === 0 ? <BlueSpinner></BlueSpinner> :
+            <div id="packages" className="text-center">
+                <div className="text-center mt-5">
+                    <h4 className="color-p choose-text">Choose Your Package</h4>
+                    <h2 className="package-text">Select Your Best Package For Your Travel</h2>
+                </div>
+
+                <Container>
+                    <Row>
+                        {
+                            packages.map(pack => <Package key={pack._id} package={pack}></Package>)
+                        }
+                    </Row>
+                </Container>
+
             </div>
-
-            <Container>
-                <Row>
-                    {
-                        packages.map(pack => <Package key={pack._id} package={pack}></Package>)
-                    }
-                </Row>
-            </Container>
-
-        </div>
     );
 };
 

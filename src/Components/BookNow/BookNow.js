@@ -3,7 +3,7 @@ import './BookNow.css';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { useHistory, useParams } from 'react-router';
+import { useHistory, useLocation, useParams } from 'react-router';
 import { useForm } from "react-hook-form";
 import useAuth from '../../hooks/useAuth';
 import { async } from '@firebase/util';
@@ -15,6 +15,10 @@ const BookNow = () => {
     const [quantity, setQuantity] = useState(1);
     const { register, handleSubmit } = useForm();
     const history = useHistory();
+
+    const location = useLocation();
+    const from = location.state?.from;
+    console.log(from);
 
 
     const postData = (url, data) => {
@@ -48,9 +52,17 @@ const BookNow = () => {
     }
 
     useEffect(() => {
-        fetch(`https://sheltered-ocean-54325.herokuapp.com/places/${id}`)
+        let url = `https://sheltered-ocean-54325.herokuapp.com/places/${id}`;
+        if (from === "banner") {
+            url = `http://localhost:5000/banner/places/${id}`
+        }
+
+        fetch(url)
             .then(res => res.json())
-            .then(data => setPack(data));
+            .then(data => {
+                console.log(data);
+                setPack(data);
+            });
     }, []);
 
 

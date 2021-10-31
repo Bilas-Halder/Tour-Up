@@ -2,6 +2,7 @@ import React from 'react';
 import { Spinner } from 'react-bootstrap';
 import { Redirect, Route } from 'react-router';
 import useAuth from '../../hooks/useAuth';
+import BlueSpinner from '../Spinner/Spinner';
 
 const PrivateRoute = (props) => {
     const { user, loading } = useAuth();
@@ -11,9 +12,7 @@ const PrivateRoute = (props) => {
     if (loading) {
         // in the time of loading it will show a spinner
         return (
-            <div style={{ minHeight: "80vh" }} className="d-flex justify-content-center align-items-center w-100">
-                <Spinner animation="border" variant="primary" />
-            </div>
+            <BlueSpinner height="80vh"></BlueSpinner>
         );
     }
 

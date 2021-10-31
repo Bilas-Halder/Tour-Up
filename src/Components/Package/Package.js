@@ -12,8 +12,12 @@ const Package = (props) => {
     const [status, setStatus] = useState(props.status);
     const { orders, setOrders } = useAuth();
 
-    const cancelOrder = () => {
-        if (window.confirm("Do you want to cancel this Booking")) {
+    const cancelOrder = (del) => {
+        let msg = "Do you want to cancel this Booking";
+        if (del === "Delete") {
+            msg = "Do you really want to Delete this Booking";
+        }
+        if (window.confirm(msg)) {
             console.log(props.orderId);
 
             fetch(`https://sheltered-ocean-54325.herokuapp.com/myorders/${props.orderId}`, {
@@ -29,8 +33,8 @@ const Package = (props) => {
         }
     };
 
-    const makeActiveOrder = () => {
-        orderData.status = "Active";
+    const makeApproveOrder = () => {
+        orderData.status = "Approve";
         console.log(orderData);
 
         fetch(`https://sheltered-ocean-54325.herokuapp.com/allOrders/${props.orderId}`, {
@@ -42,7 +46,7 @@ const Package = (props) => {
         })
             .then(response => response.json())
             .then(result => {
-                setStatus("Activated");
+                setStatus("Approved");
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -80,10 +84,25 @@ const Package = (props) => {
 
                             {
                                 myOrder ? <button onClick={cancelOrder} className="primary-btn-right" >Cancel</button>
-                                    : allOrder ? status === "Pending" && <button onClick={makeActiveOrder} className="primary-btn-right" >Active</button>
-                                        : <NavLink className="primary-btn-right" to={`/bookpackage/${_id}`}>Book Now</NavLink>
+                                    : allOrder || <NavLink className="primary-btn-right" to={`/bookpackage/${_id}`}>Book Now</NavLink>
                             }
                         </div>
+                        {
+                            allOrder ? <div className="d-flex justify-content-center align-items-center mt-3">
+
+                                <button onClick={() => cancelOrder("Delete")}
+                                    style={{
+                                        fontSize: "1rem",
+                                        padding: "7px 20px"
+                                    }}
+                                    className="primary-btn mx-3" >Delete</button>
+                                {
+                                    status === "Pending" && <button onClick={makeApproveOrder} className="primary-btn-right mx-3" >Approve</button>
+                                }
+                            </div>
+                                : ""
+
+                        }
                     </div>
                 </Card.Body>
             </Card>
