@@ -88,7 +88,9 @@ const Package = (props) => {
                             }
                         </div>
                         {
-                            allOrder ? <div className="d-flex justify-content-center align-items-center mt-3">
+                            allOrder ? <div style={{
+                                justifyContent: status === "Pending" ? "center" : "end"
+                            }} className="d-flex align-items-center mt-3">
 
                                 <button onClick={() => cancelOrder("Delete")}
                                     style={{
