@@ -14,6 +14,9 @@ import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import Dashboard from './Components/Dashboard/Dashboard';
 import BookNow from './Components/BookNow/BookNow';
 import ScrollToTop from './Components/ScrollToTop/ScrollToTop';
+import MyOrders from './Components/MyOrders/MyOrders';
+import ManageOrders from './Components/ManageOrders/ManageOrders';
+import AddPackage from './Components/AddPackage/AddPackage';
 
 
 initializeApp(firebaseConfig);
@@ -30,17 +33,20 @@ function App() {
             <Home></Home>
           </Route>
 
-          <PrivateRoute path='/dashboard' exact >
-            <Dashboard></Dashboard>
+          <PrivateRoute path={['/dashboard/', '/dashboard/myorders']} exact >
+            <MyOrders></MyOrders>
+          </PrivateRoute>
+
+          <PrivateRoute path='/dashboard/manageorders' exact >
+            <ManageOrders></ManageOrders>
+          </PrivateRoute>
+          <PrivateRoute path='/dashboard/addpackage' exact >
+            <AddPackage></AddPackage>
           </PrivateRoute>
 
           <PrivateRoute path='/bookpackage/:id' >
             <BookNow></BookNow>
           </PrivateRoute>
-
-          <Route path="/aboutus" exact >
-            <AboutUs></AboutUs>
-          </Route>
 
           <Route path="/login" exact >
             <LogIn></LogIn>

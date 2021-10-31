@@ -37,7 +37,6 @@ const Header = () => {
                         user.email && <Nav.Link className="text-center nav-btn" as={HashLink} to="/dashboard">Dashboard</Nav.Link>
                     }
 
-                    <Nav.Link className="text-center nav-btn" as={HashLink} to="/aboutus">About Us</Nav.Link>
 
                     {
                         user.email ? <Nav.Link className="text-center nav-btn" as={HashLink} to="/dashboard">{user.displayName}</Nav.Link>

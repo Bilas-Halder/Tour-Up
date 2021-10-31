@@ -32,6 +32,8 @@ const BookNow = () => {
     const onSubmit = async (data) => {
         data.placeId = pack?._id;
         data.people = quantity;
+        data.status = "Pending";
+        data.package = pack;
 
         const url = "https://sheltered-ocean-54325.herokuapp.com/bookone";
         await postData(url, data)

@@ -8,6 +8,8 @@ const useFirebase = () => {
     const [logged, setLogged] = useState(false);
     const [loading, setLoading] = useState(true);
 
+    const [orders, setOrders] = useState([]);
+
 
     const googleProvider = new GoogleAuthProvider();
     const facebookProvider = new FacebookAuthProvider();
@@ -54,6 +56,8 @@ const useFirebase = () => {
         user,
         logged,
         loading,
+        orders,
+        setOrders,
         setUser,
         setLogged,
         setLoading,
